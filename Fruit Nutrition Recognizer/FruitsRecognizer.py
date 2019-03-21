@@ -29,14 +29,14 @@ labels = []
 class_id = 0
 names = {}
 for fx in os.listdir(dataset_path):
-	print(fx)
+	##print(fx)
 	for f in os.listdir(dataset_path+fx):
 		if(f.endswith('.jpg')):
 			names[class_id] = fx
-			print("Loaded "+f)
+			##print("Loaded "+f)
 			img = Image.open(dataset_path+fx+'/'+f)
 			arr = np.array(img)
-			print(arr.shape)
+			##print(arr.shape)
 			#data_item = np.load(dataset_path+fx)
 			face_data.append(arr)
 			target = class_id*np.ones((arr.shape[0],))
@@ -44,7 +44,7 @@ for fx in os.listdir(dataset_path):
 			labels.append(target)
 face_data = np.array(face_data)
 face_dataset = np.concatenate(face_data,axis=0)
-print(face_dataset.shape)
+##print(face_dataset.shape)
 face_dataset = face_dataset[:,0]
 face_labels = np.concatenate(labels,axis=0).reshape((-1,1))
 print(face_dataset.shape)
